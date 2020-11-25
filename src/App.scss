@@ -1,0 +1,30 @@
+//variables
+
+$border-color: #ebebeb;
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+// border
+@mixin border($t=0, $r=0, $b=0, $l=0, $radius=0) {
+  border-top: $t solid $border-color;
+  border-right: $r solid $border-color;
+  border-bottom: $b solid $border-color;
+  border-left: $l solid $border-color;
+  border-radius: $radius;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 100% 14px $font-stack;
+  color: $primary-color;
+}
