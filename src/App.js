@@ -182,7 +182,7 @@ function App() {
               )}
             </ul>
           </div>
-          <div className="p-10 table-container">
+          <div className="table-container">
             <div className="work-quantities d-flex-l">
               {workQuantities.slice(0, 20).map((item, i) => (
                 <div className="work-quantity border radius" key={item.title}>
@@ -203,6 +203,7 @@ function App() {
                 </div>
               ))}
             </div>
+            <div className="work-table-container">
             <div className="work-table border radius">
               <div className="table-head border-b">
                 <div className="trow">
@@ -241,6 +242,7 @@ function App() {
                   ))}
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div className="d-flex justify-space border-t p-10">

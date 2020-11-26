@@ -317,13 +317,16 @@ a {
 
       .table-container {
         height: 100%;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
 
         .work-quantities {
           overflow-x: auto;
-          margin-bottom: 10px;
+          margin-bottom: 20px;
 
           .work-quantity {
-            margin-right: 10px;
+            margin-right: 20px;
             flex-grow: 1;
             min-width: 200px;
 
@@ -361,13 +364,16 @@ a {
           }
         }
 
+        .work-table-container {
+          flex-grow: 1;
+        }
         .work-table {
           .tcol {
             padding: 20px;
             border-right: 1px solid $border-color;
 
             &:last-child {
-              border-right: none
+              border-right: none;
             }
             &-2,
             &-3,
@@ -450,6 +456,9 @@ a {
     button,
     svg {
       color: $accent-color;
+    }
+    input {
+      background: $accent-color;
     }
   }
 }
