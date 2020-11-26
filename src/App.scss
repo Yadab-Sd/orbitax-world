@@ -1,30 +1,304 @@
 //variables
+$font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$primary-color: #545a82;
+$accent-color: #337aee;
+$header-text-color: #80aaee;
+$border-color: #e3e4ec;
+$success: #4ec64d;
+$warn: #ff7c06;
+$dead-color: #dadbe6;
 
-$border-color: #ebebeb;
-$font-stack: Helvetica, sans-serif;
-$primary-color: #333;
-
+// build-in template
 @mixin transform($property) {
   -webkit-transform: $property;
   -ms-transform: $property;
   transform: $property;
 }
-// border
-@mixin border($t=0, $r=0, $b=0, $l=0, $radius=0) {
-  border-top: $t solid $border-color;
-  border-right: $r solid $border-color;
-  border-bottom: $b solid $border-color;
-  border-left: $l solid $border-color;
-  border-radius: $radius;
+
+// for responsive layout
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Wrong break-point";
+  }
 }
 
+//my default styles reset
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+  border: none;
+}
+
 body {
-  font: 100% 14px $font-stack;
+  font: 14px $font-stack;
   color: $primary-color;
+}
+
+input,
+select {
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color;
+  transition: all 0.3s;
+}
+
+//shortcut
+
+.p-5 {
+  padding: 10px;
+}
+
+.p-10 {
+  padding: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.small {
+  font-size: 0.8rem;
+}
+
+.white {
+  color: #fff;
+}
+
+.dead-text {
+  color: $dead-color;
+}
+
+.radius {
+  border-radius: 5px;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-dir-c {
+  flex-direction: column;
+}
+
+.justify-space {
+  justify-content: space-between;
+}
+
+.border-t {
+  border-top: 1px solid $border-color;
+}
+
+.border-r {
+  border-right: 1px solid $border-color;
+}
+
+.border-b {
+  border-bottom: 1px solid $border-color;
+}
+
+.border-l {
+  border-left: 1px solid $border-color;
+}
+
+.border {
+  border: 1px solid $border-color;
+}
+
+.radius {
+  border-radius: 5px;
+}
+
+::placeholder {
+  color: $header-text-color;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: $primary-color;
+}
+
+// page
+.orbitax {
+  height: 100vh;
+
+  &-header {
+    display: flex;
+    height: 60px;
+    background: $accent-color;
+    color: $header-text-color;
+
+    &-left {
+      flex: 1 1 15%;
+      border-right: 1px solid $header-text-color;
+
+      .logo {
+        height: 100%;
+      }
+
+      .toggle-btn {
+      }
+    }
+
+    &-middle {
+      flex: 1 1 70%;
+      .header-menus {
+        .text-menus {
+          position: relative;
+          padding-right: 5px;
+
+          &:after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background-color: $header-text-color;
+            top: 0;
+            right: 0;
+          }
+
+          a {
+            display: inline-block;
+            padding: 0 20px;
+            color: $header-text-color;
+          }
+        }
+        .icon-menus {
+          margin-left: 10px;
+          ul {
+            display: inline;
+            li {
+              display: inline-block;
+
+              a {
+                padding: 0 15px;
+              }
+            }
+          }
+        }
+      }
+
+      .search-and-account {
+        .search {
+          .icon {
+            padding: 0 10px;
+          }
+
+          input {
+            border-radius: 50px;
+            color: #fff;
+            padding: 5px 10px;
+            margin: 10px;
+          }
+        }
+        .account {
+          .avatar {
+            margin: 0 10px;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            color: $accent-color;
+            background: $header-text-color;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+
+    &-right {
+      flex: 1 1 15%;
+      border-left: 1px solid $header-text-color;
+
+      .times-icon,
+      svg {
+        color: #fff !important;
+      }
+    }
+  }
+
+  &-body {
+    height: calc(100% - 60px);
+    align-items: stretch;
+
+    &-left {
+      padding-top: 10px;
+      padding-left: 10px;
+      flex: 1 1 15%;
+    }
+
+    &-middle {
+      flex: 1 1 70%;
+    }
+
+    &-right {
+      flex: 1 1 15%;
+
+      .heading {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  // instruments
+  .orbitax-breadcrumbs {
+    .breadcome-separator {
+      color: $dead-color;
+    }
+  }
+
+  .orbitax-header {
+    a:hover {
+      color: #fff;
+
+      svg {
+        color: #fff;
+      }
+    }
+
+    svg {
+      color: $header-text-color;
+    }
+  }
+
+  .orbitax-body {
+    a:hover {
+      color: $accent-color;
+
+      svg {
+        color: $accent-color;
+      }
+    }
+
+    svg {
+      color: $dead-color;
+    }
+  }
 }
