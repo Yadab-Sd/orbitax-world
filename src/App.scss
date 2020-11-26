@@ -1,5 +1,5 @@
 //variables
-$font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $primary-color: #545a82;
 $accent-color: #337aee;
 $header-text-color: #80aaee;
@@ -162,7 +162,7 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba($border-color, 0.5);
+  background: rgba($border-color, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -172,6 +172,7 @@ a {
 // page
 .orbitax {
   height: 100vh;
+  overflow: hidden;
 
   &-header {
     display: flex;
@@ -199,7 +200,7 @@ a {
           padding-right: 5px;
 
           &:after {
-            content: "";
+            content: '';
             position: absolute;
             width: 1px;
             height: 100%;
@@ -316,13 +317,13 @@ a {
       }
 
       .table-container {
-        height: 100%;
+        height: calc(100% - 140px);
         padding: 25px;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
 
         .work-quantities {
-          overflow-x: auto;
           margin-bottom: 20px;
 
           .work-quantity {
@@ -339,7 +340,7 @@ a {
                 height: 50px;
                 width: 50px;
                 color: $success;
-                background: rgba($success, 0.5);
+                background: rgba($success, 0.3);
 
                 svg {
                   color: $success;
@@ -361,6 +362,17 @@ a {
                 }
               }
             }
+
+            &:nth-child(2n) .work-quantity-info {
+              .icon {
+                color: $warn;
+                background: rgba($warn, 0.3);
+              }
+
+              svg {
+                color: $warn;
+              }
+            }
           }
         }
 
@@ -380,6 +392,17 @@ a {
             &-5 {
               flex: 1 1 30%;
             }
+            &-1 {
+              svg {
+                border: 1px solid $border-color;
+              }
+            }
+            &-2.active-bar {
+              border-left: 2px solid $success;
+            }
+            &-2.deactive-bar {
+              border-left: 2px solid $warn;
+            }
           }
           .trow {
             display: flex;
@@ -391,6 +414,12 @@ a {
               border-bottom: none;
             }
           }
+          .trow.deactive {
+            background: rgba($warn, 0.1);
+          }
+          .trow.active {
+            background: transparent;
+          }
 
           .table-head {
           }
@@ -399,6 +428,10 @@ a {
             max-height: 400px;
           }
         }
+      }
+
+      .footer-controls {
+        background: #fff;
       }
     }
 
