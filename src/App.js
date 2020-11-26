@@ -177,7 +177,7 @@ function App() {
                     </span>
                   </li>
                 ) : (
-                  <li key={index}>{breadcrumb.title}</li>
+                  <li key={index} className='bold'>{breadcrumb.title}</li>
                 )
               )}
             </ul>
